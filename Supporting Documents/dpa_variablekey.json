@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "title": "DPA Variable Key Database Map",
+    "version": "1.0",
+    "generated_at": "2026-09-03T01:24:33-07:00",
+    "description": "Database kunci variabel dari Dokumen Pelaksanaan Anggaran (DPA) Kota Yogyakarta TA 2026 untuk otomatisasi pengadaan hibrida."
+  },
+  "dpa_variables": {
+    "nomor_dpa": "DPA/A.1/5.02.0.00.0.00.01.0000/001/2026",
+    "organisasi": {
+      "kode_urusan": "5",
+      "nama_urusan": "UNSUR PENUNJANG URUSAN PEMERINTAHAN",
+      "kode_bidang_urusan": "5.02",
+      "nama_bidang_urusan": "Keuangan",
+      "skpd": "Badan Pengelolaan Keuangan dan Aset Daerah Kota Yogyakarta",
+      "alamat_skpd": "Jl. Kenari No. 56 Yogyakarta Kode Pos 55165"
+    },
+    "klasifikasi_anggaran": {
+      "kode_program": "5.02.04",
+      "nama_program": "Program Pengelolaan Pendapatan Daerah",
+      "kode_kegiatan": "5.02.04.2.01",
+      "nama_kegiatan": "Kegiatan Pengelolaan Pendapatan Daerah",
+      "kode_sub_kegiatan": "5.02.04.2.01.0002",
+      "nama_sub_kegiatan": "Analisa dan Pengembangan Pajak Daerah, serta Penyusunan Kebijakan Pajak Daerah",
+      "sumber_dana": "PENDAPATAN ASLI DAERAH (PAD)",
+      "alokasi_sub_kegiatan_raw": 325142000,
+      "alokasi_sub_kegiatan_formatted": "Rp325.142.000,00"
+    },
+    "rekening_belanja": {
+      "kode_rekening": "5.1.02.02.009.00006",
+      "nama_rekening": "Belanja Jasa Konsultansi Berorientasi Bidang-Keuangan",
+      "pagu_rekening_raw": 290000000,
+      "pagu_rekening_formatted": "Rp290.000.000,00"
+    },
+    "penanggung_jawab": {
+      "nama": "RADEN RORO ANDARINI, S.E., M.Si.",
+      "nip": "197203171997032004",
+      "pangkat": "Pembina Utama Muda (IV/c)",
+      "jabatan": "Pengguna Anggaran / Pejabat Pembuat Komitmen"
+    }
+  },
+  "relational_mappings": {
+    "sirup_mak": {
+      "formula": "dpa_variables.klasifikasi_anggaran.kode_sub_kegiatan + '.' + dpa_variables.rekening_belanja.kode_rekening",
+      "expected_output": "5.02.04.2.01.0002.5.1.02.02.009.00006",
+      "target_system": "SiRUP LKPP"
+    },
+    "kak_header": {
+      "fields": [
+        "dpa_variables.nomor_dpa",
+        "dpa_variables.klasifikasi_anggaran.nama_sub_kegiatan",
+        "dpa_variables.penanggung_jawab.nama",
+        "dpa_variables.penanggung_jawab.nip"
+      ],
+      "target_document": "Kerangka Acuan Kerja (KAK) & Uraian Singkat Pekerjaan"
+    },
+    "hps_limit": {
+      "max_accumulation_value": 290000000,
+      "check_formula": "sum(paket_hps) <= pagu_rekening_raw",
+      "target_document": "Harga Perkiraan Sendiri (HPS) & TKDN"
+    },
+    "spk_legal_foundation": {
+      "fields": [
+        "dpa_variables.nomor_dpa",
+        "dpa_variables.penanggung_jawab.nama",
+        "dpa_variables.penanggung_jawab.nip",
+        "dpa_variables.penanggung_jawab.pangkat"
+      ],
+      "target_document": "Surat Perintah Kerja (SPK)"
+    }
+  }
+}

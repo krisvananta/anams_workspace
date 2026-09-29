@@ -1,0 +1,17 @@
+{
+  "app_name": "Procurement Automation Engine",
+  "version": "2.0-Desktop",
+  "gemini_api_key": "YOUR_GEMINI_API_KEY_HERE",
+  "local_storage": {
+    "templates_dir": "./python_engine/templates",
+    "output_dir": "./output_packages",
+    "master_data_file": "./python_engine/data/Data_Master_Pengadaan.xlsx",
+    "register_json_file": "./Register_Arsip_Penomoran.json"
+  },
+  "default_parameters": {
+    "tahun_anggaran": "2026",
+    "kode_mak": "5.02.04.2.01.0002.5.1.02.02.009.00006",
+    "ppn_rate": 0.11,
+    "tkdn_target": 1.0
+  }
+}

@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pypdf
+python-docx
+openpyxl
+google-genai
+pydantic
+jinja2
+python-dotenv
+pyinstaller
